@@ -5,15 +5,19 @@ import { ProductDetailComponent } from './component/product-detail/product-detai
 import { WelcomeComponent } from './component/welcome/welcome.component';
 
 
-const routes: Routes = [{ path: 'products', component: ProductListComponent },
-{
-  path: 'products/:id',
-  component: ProductDetailComponent
-},
-{
-  path: 'welcome',
-  component: WelcomeComponent
-}];
+const routes: Routes = [
+  {
+    path: 'products',
+    component: ProductListComponent
+  },
+  {
+    path: 'products/:id',
+    component: ProductDetailComponent
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

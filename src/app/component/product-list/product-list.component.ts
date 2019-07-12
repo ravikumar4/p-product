@@ -14,14 +14,15 @@ export class ProductListComponent implements OnInit {
   showImage = false;
   errorMessage = '';
 
-  listFilter = '';
-  // get listFilter(): string {
-  //   return this._listFilter;
-  // }
-  // set listFilter(value: string) {
-  //   this._listFilter = value;
-  //   this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
-  // }
+  private _listFilter = '';
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+    console.log('filter string: ' + value);
+  }
 
   filteredProducts: IProduct[] = [];
   products: IProduct[] = [];
@@ -31,6 +32,10 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = this.products;
   }
 
+  onFilterChange(event: any): void {
+    console.log('onFilterChange');
+    console.log(event);
+  }
   onRatingClicked(message: string): void {
     this.pageTitle = 'Product List: ' + message;
   }
