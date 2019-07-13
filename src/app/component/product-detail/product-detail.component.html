@@ -3,7 +3,7 @@
   <div class='card-header'>
     {{pageTitle + ': ' + product.productName}}
   </div>
-
+  <div *ngIf='filterOn'>FilterBy: {{filterOn}}</div>
   <div class='card-body'>
     <div class='row'>
       <div class='col-md-8'>
