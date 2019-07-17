@@ -10,6 +10,8 @@ import { ProductListComponent } from './component/product-list/product-list.comp
 import { ProductDetailComponent } from './component/product-detail/product-detail.component';
 import { StarRatingComponent } from './component/star-rating/star-rating.component';
 import { ConvertToSpacePipe } from './convert-to-space.pipe';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { ConvertToSpacePipe } from './convert-to-space.pipe';
     ProductListComponent,
     ProductDetailComponent,
     StarRatingComponent,
-    ConvertToSpacePipe
+    ConvertToSpacePipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    UserModule,
     AppRoutingModule
   ],
   providers: [],
