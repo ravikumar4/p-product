@@ -3,7 +3,11 @@
   <ul class='nav nav-pills'>
     <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/welcome']">Home</a></li>
     <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/products']">Product List</a></li>
-    <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/login']">Login</a></li>
+
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li *ngIf='!authService.isLoggedIn'><a class='nav-link' routerLinkActive='active' [routerLink]="['/login']">Login</a></li>
+    <li *ngIf="authService.isLoggedIn"><a class='nav-link' routerLinkActive='active' (click)='userLogOut()'>Logout</a></li>
   </ul>
 </nav>
 <div class='container'>

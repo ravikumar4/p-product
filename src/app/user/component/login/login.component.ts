@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   pageTitle = 'Log In';
   errorMessage: string;
-  constructor(authService: AuthService) { }
+
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,13 +24,14 @@ export class LoginComponent implements OnInit {
       const userName = loginForm.form.value.userName;
       const password = loginForm.form.value.password;
       console.log('login invoke for user ->' + userName);
-      // this.authService.login(userName, password);
-
-      // if (this.authService.redirectUrl) {
-      //   this.router.navigateByUrl(this.authService.redirectUrl);
-      // } else {
-      //   this.router.navigate(['/products']);
-      // }
+      this.authService.login(userName, password);
+      if (this.authService.currentUser) {
+        if (this.authService.redirectUrl) {
+          this.router.navigateByUrl(this.authService.redirectUrl);
+        } else {
+          this.router.navigate(['/products']);
+        }
+      }
     } // else {
     //   this.errorMessage = 'Please enter a user name and password.';
     // }

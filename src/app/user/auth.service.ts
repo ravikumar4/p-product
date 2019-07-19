@@ -7,6 +7,7 @@ import { User } from './user';
 export class AuthService {
 
   currentUser: User;
+  redirectUrl: string;
 
 
   get isLoggedIn(): boolean {
@@ -15,7 +16,7 @@ export class AuthService {
 
   constructor() { }
 
-  login( userName: string, password: string): void{
+  login( userName: string, password: string): void {
     if (!userName || !password) {
       return;
     }
@@ -25,13 +26,14 @@ export class AuthService {
         userName,
         isAdmin: true
       };
-      return;
-    }
+    } else {
     this.currentUser = {
       id: 2,
       userName,
       isAdmin: false
     };
+  }
+    console.log('login -> login successful');
   }
 
   logout(): void {
