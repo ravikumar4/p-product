@@ -9,6 +9,7 @@ import { WelcomeComponent } from './component/welcome/welcome.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
+import { MessageModule } from './message/message.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProductModule } from './product/product.module';
     FormsModule,
     UserModule,
     ProductModule,
+    MessageModule,
     AppRoutingModule
   ],
   providers: [],

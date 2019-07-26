@@ -64,4 +64,20 @@ export class ProductListService {
       }
     ];
   }
+
+  public getProduct(id: number): IProduct {
+
+    if (id === 0) {
+      return {productId: 0,
+        productName: '',
+        productCode: '',
+        releaseDate: '',
+        description: '',
+        price: 0,
+        starRating: 0,
+        imageUrl: ''};
+    }
+    console.log(this.getProducts().find(value => value.productId === id));
+    return this.getProducts().find(value => value.productId === id);
+  }
 }

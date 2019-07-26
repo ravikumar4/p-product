@@ -21,6 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  // imports: [RouterModule.forRoot(routes, {enableTracing : true})],  // Sample code for enabling trace info in console.
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

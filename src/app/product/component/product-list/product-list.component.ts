@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { IProduct } from '../../../models/product';
 import { ProductListService } from 'src/app/product-list.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { ProductListService } from 'src/app/product-list.service';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  pageTitle = 'Product List';
+  pageTitle = '';
   imageWidth = 50;
   imageMargin = 2;
   showImage = false;
@@ -28,7 +29,8 @@ export class ProductListComponent implements OnInit {
   filteredProducts: IProduct[] = [];
   products: IProduct[] = [];
 
-  constructor(private productSvc: ProductListService) {
+  constructor(private productSvc: ProductListService,
+              private route: ActivatedRoute) {
     this.products = this.productSvc.getProducts();
     this.filteredProducts = this.products;
   }
@@ -54,5 +56,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.pageTitle = this.route.snapshot.data['pageTitle'];
   }
 }

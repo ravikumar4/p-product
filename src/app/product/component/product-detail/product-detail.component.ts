@@ -25,6 +25,8 @@ export class ProductDetailComponent implements OnInit {
       const id = +param;
       this.product = this.productSvc.getProducts().find((p: IProduct) => p.productId === id);
     }
+    const resolvedData: IProduct =
+      this.route.snapshot.data['resolvedData'];
   }
 
   onBack(): void {
