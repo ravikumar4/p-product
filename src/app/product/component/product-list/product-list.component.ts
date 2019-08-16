@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../../models/product';
 import { ProductListService } from 'src/app/product-list.service';
 import { ActivatedRoute } from '@angular/router';
+import { PropertybagService } from 'src/app/propertybag.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class ProductListComponent implements OnInit {
   pageTitle = '';
   imageWidth = 50;
   imageMargin = 2;
-  showImage = false;
+  showImage: boolean;
   errorMessage = '';
 
   private _listFilter = '';
@@ -30,7 +31,8 @@ export class ProductListComponent implements OnInit {
   products: IProduct[] = [];
 
   constructor(private productSvc: ProductListService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private proprtyBagSvc: PropertybagService) {
     this.products = this.productSvc.getProducts();
     this.filteredProducts = this.products;
   }
@@ -52,11 +54,12 @@ export class ProductListComponent implements OnInit {
   }
 
   toggleImage(): void {
-    this.showImage = !this.showImage;
+    this.proprtyBagSvc.showImage = !this.proprtyBagSvc.showImage;
+    this.showImage = this.proprtyBagSvc.showImage;
   }
 
   ngOnInit(): void {
-
+    this.showImage = this.proprtyBagSvc.showImage;
     this.pageTitle = this.route.snapshot.data['pageTitle'];
   }
 }
