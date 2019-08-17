@@ -22,7 +22,12 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit() {
     // temp code .. will be removed.
-    this.product = this.productService.getProducts()[1];
+    // this.product = this.productService.getProducts()[1];
+    this.route.data.subscribe(data => {
+      this.product = data[ 'resolvedData' ];
+      console.log('data retrived');
+      console.log(this.product);
+     });
   }
 
   deleteProduct(): void {}
@@ -31,7 +36,16 @@ export class ProductEditComponent implements OnInit {
     return true;
   }
 
-  saveProduct(): void {}
+  saveProduct(): void {
+    //  if the product code id  == 0 , create new product.
+    //  else update the existing product.
+    if ( this.product.productId === 0) {
+      console.log('new product');
+      this.productService.createProduct(this.product);
+    } else {
+      console.log('update product');
+    }
+  }
 
 
 }

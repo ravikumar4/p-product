@@ -21,8 +21,9 @@ export class ProductTagsComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    // temp code .. will be removed.
-    this.product = this.productService.getProducts()[1];
+    this.route.parent.data.subscribe(data => {
+      this.product = data[ 'resolvedData' ];
+     });
   }
 
 }

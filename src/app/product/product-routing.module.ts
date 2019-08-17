@@ -13,7 +13,7 @@ import { ProductResolverService } from './product-resolver.service';
 const routes: Routes = [
    {
     path: 'products',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',

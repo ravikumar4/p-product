@@ -54,12 +54,14 @@ export class ProductListComponent implements OnInit {
   }
 
   toggleImage(): void {
-    this.proprtyBagSvc.showImage = !this.proprtyBagSvc.showImage;
-    this.showImage = this.proprtyBagSvc.showImage;
+    //this.proprtyBagSvc.showImage = !this.proprtyBagSvc.showImage;
+    this.showImage =  !this.showImage; // this.proprtyBagSvc.showImage;
   }
 
   ngOnInit(): void {
-    this.showImage = this.proprtyBagSvc.showImage;
+    // this.showImage = this.proprtyBagSvc.showImage;
+    this.listFilter = this.route.snapshot.queryParamMap.get('filterBy') || '';
+    this.showImage = this.route.snapshot.queryParamMap.get('showImage') === 'true';
     this.pageTitle = this.route.snapshot.data['pageTitle'];
   }
 }
